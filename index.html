@@ -1,0 +1,384 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <title>PayQin Assurance API</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen-0cf2b2b2.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-bccf8c07.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-c5541673.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;Code&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar-cad8cdcb.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/n3-55bb0ecd.png" class="logo" alt="N3" />
+        <div class="lang-selector"> 
+              <a href="#" data-language-name="Code">Code</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#merchant-payment-link" class="toc-h1 toc-link" data-title="Merchant payment link">Merchant payment link</a>
+          </li>
+          <li>
+            <a href="#generate-new-secret-key" class="toc-h1 toc-link" data-title="Generate new secret key">Generate new secret key</a>
+          </li>
+          <li>
+            <a href="#change-info-excluding-secret-key-about-a-merchant" class="toc-h1 toc-link" data-title="Change info (excluding secret key) about a merchant">Change info (excluding secret key) about a merchant</a>
+          </li>
+          <li>
+            <a href="#create-a-transaction" class="toc-h1 toc-link" data-title="Create a transaction">Create a transaction</a>
+          </li>
+          <li>
+            <a href="#how-to-create-signature" class="toc-h1 toc-link" data-title="How to create signature?">How to create signature?</a>
+          </li>
+      </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p>PayQin Business API allows you to implement the payqin payment method on your website and thus receive payments from your customers</p>
+<h1 id='merchant-payment-link'>Merchant payment link</h1>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">GET</span> <span class="p">{</span><span class="nx">baseUrl</span><span class="p">}</span><span class="sr">/api/</span><span class="nx">business</span><span class="o">/</span><span class="nx">merchant</span>
+<span class="nl">Headers</span><span class="p">:</span>
+<span class="nl">Authorization</span><span class="p">:</span> <span class="nx">Bearer</span> <span class="o">&lt;</span><span class="nx">AUTH_TOKEN</span><span class="o">&gt;</span>
+
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a1b2c3"</span><span class="w"> </span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"notifyUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/notify"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"successUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"failUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/fail"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"checkOrderUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/checkOrder"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"vendors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"vendor1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"vendor2"</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"secretKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Secret Key"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+
+</span></code></pre>
+<p>Get info <code>(including secret key)</code> about a merchant
+[Note: Secret key can also be accessed from the PayQin App]
+[Note: For <AUTH_TOKEN> Please access the Auth segment]</p>
+<h1 id='generate-new-secret-key'>Generate new secret key</h1>
+<p><code>[Note: This can also be done from the PayQin App]</code> </p>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">POST</span> <span class="p">{</span><span class="nx">base_url</span><span class="p">}</span><span class="sr">/api/</span><span class="nx">business</span><span class="o">/</span><span class="nx">merchant</span><span class="o">/</span><span class="nx">generate</span><span class="o">-</span><span class="nx">key</span>
+<span class="nl">Headers</span><span class="p">:</span>
+<span class="nl">Authorization</span><span class="p">:</span> <span class="nx">Bearer</span> <span class="o">&lt;</span><span class="nx">MASTER_KEY</span><span class="o">&gt;</span>
+<span class="nx">Accept</span><span class="p">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+
+</code></pre><h1 id='change-info-excluding-secret-key-about-a-merchant'>Change info (excluding secret key) about a merchant</h1>
+<p><code>[Note: This can also be done from the PayQin App]</code> </p>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">PUT</span> <span class="p">{</span><span class="nx">base_url</span><span class="p">}</span><span class="sr">/api/</span><span class="nx">business</span><span class="o">/</span><span class="nx">merchant</span>
+
+<span class="nl">Headers</span><span class="p">:</span>
+<span class="nl">Authorization</span><span class="p">:</span> <span class="nx">Bearer</span> <span class="o">&lt;</span><span class="nx">MASTER_KEY</span><span class="o">&gt;</span>
+<span class="nx">Accept</span><span class="p">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+
+</code></pre>
+<blockquote>
+<p>Body </p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"fee"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;Fee</span><span class="w"> </span><span class="err">Percent</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">Number&gt;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"checkOrderUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"notifyUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"successUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"failUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="p">,</span><span class="w">  
+  </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"merchant"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a1b2c3"</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fee"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;Fee</span><span class="w"> </span><span class="err">Percent</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">Number&gt;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notifyUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"successUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"failUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"checkOrderUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vendors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"vendor1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"vendor2"</span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h1 id='create-a-transaction'>Create a transaction</h1>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">POST</span> <span class="p">{</span><span class="nx">business_base_url</span><span class="p">}</span><span class="sr">/business-api/</span><span class="nx">transactions</span>
+<span class="nl">Header</span><span class="p">:</span>
+<span class="nl">Accept</span><span class="p">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+
+
+</code></pre>
+<blockquote>
+<p>Body</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"shopId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;your-payqin-id-here&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;Total</span><span class="w"> </span><span class="err">amount</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">transaction&gt;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"customerNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Customer Id with which you can identify the customer&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"orderNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Order Id with which you can identify the order&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;MD5 Hash with which we know the transaction is initiated by you&gt;"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h1 id='how-to-create-signature'>How to create signature?</h1>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"transaction"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;transaction id&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"merchant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;merchant id&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vendor"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;CUR&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;amount&gt;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPEN"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"orderNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;order number&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"customerNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;customer number&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;signature&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Date and Time&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"feeAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Fee amount&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"feeAmountMerchant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Fee amount to merchant&gt;"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example.com"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Create a MD5 hash of shopId;amount;secretKey
+You can obtain your secretKey through the App or see the section [Get info (including secret key) about a merchant] or [Generate new secret key] section</p>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="Code">Code</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>

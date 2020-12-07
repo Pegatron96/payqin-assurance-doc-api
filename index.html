@@ -223,19 +223,32 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
           </li>
           <li>
-            <a href="#merchant-payment-link" class="toc-h1 toc-link" data-title="Merchant payment link">Merchant payment link</a>
+            <a href="#understanding-the-merchant-features-in-payqin-app" class="toc-h1 toc-link" data-title="Understanding the Merchant features in PayQin App">Understanding the Merchant features in PayQin App</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#main-screen" class="toc-h2 toc-link" data-title="Main Screen">Main Screen</a>
+                  </li>
+                  <li>
+                    <a href="#id-amp-key-screen" class="toc-h2 toc-link" data-title="ID &amp; Key Screen">ID &amp; Key Screen</a>
+                  </li>
+                  <li>
+                    <a href="#urls" class="toc-h2 toc-link" data-title="URLs">URLs</a>
+                  </li>
+              </ul>
           </li>
           <li>
-            <a href="#generate-new-secret-key" class="toc-h1 toc-link" data-title="Generate new secret key">Generate new secret key</a>
+            <a href="#how-to-create-a-transaction" class="toc-h1 toc-link" data-title="How to create a transaction?">How to create a transaction?</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#request-description" class="toc-h2 toc-link" data-title="Request Description">Request Description</a>
+                  </li>
+                  <li>
+                    <a href="#response-description" class="toc-h2 toc-link" data-title="Response Description">Response Description</a>
+                  </li>
+              </ul>
           </li>
           <li>
-            <a href="#change-info-excluding-secret-key-about-a-merchant" class="toc-h1 toc-link" data-title="Change info (excluding secret key) about a merchant">Change info (excluding secret key) about a merchant</a>
-          </li>
-          <li>
-            <a href="#create-a-transaction" class="toc-h1 toc-link" data-title="Create a transaction">Create a transaction</a>
-          </li>
-          <li>
-            <a href="#how-to-create-signature" class="toc-h1 toc-link" data-title="How to create signature?">How to create signature?</a>
+            <a href="#how-to-sign-your-transaction-how-to-generate-a-signature" class="toc-h1 toc-link" data-title="How to sign your transaction? [How to generate a signature?]">How to sign your transaction? [How to generate a signature?]</a>
           </li>
       </ul>
     </div>
@@ -243,135 +256,149 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>PayQin Business API allows you to implement the payqin payment method on your website and thus receive payments from your customers</p>
-<h1 id='merchant-payment-link'>Merchant payment link</h1>
+<p>PayQin Business API allows you to implement the PayQin Payment method in your website and thus receive payments from your customers. With PayQin Business API you can create a transaction between customers and you (the merchant); and the customers will complete the transaction by going through the payment process.</p>
+
+<p>This Documentation is divided into two sections: the first will help you understand merchant feature and guide you through how to configure your merchant account properly from the PayQin App; and the second will describe how to create a transaction using PayQin Business API.</p>
+<h1 id='understanding-the-merchant-features-in-payqin-app'>Understanding the Merchant features in PayQin App</h1><h2 id='main-screen'>Main Screen</h2>
+<p>Configuration of the merchant feature is accessible from &quot;Merchant Details&quot; option in your &quot;Account Screen&quot; as shown in the screenshot below:</p>
+
+<!-- <div style="position:relative;bottom:400px;margin:70px">
+  <img src="images/filename-8e18fffe.png"
+     alt="Markdown Monster icon"
+     style="width:200px" />
+     <p>Fig: Merchant Details option on Account Screen</p>
+</div> -->
+
+<p><img src="images/filename-8e18fffe.png" style="width: 200px">
+<div style="margin:10px">
+<small>Fig: Merchant Details option on Account Screen</small>
+</div> <br></p>
+
+<p>After you tap on &quot;Merchant Details&quot; option from the &quot;Account screen&quot;, you will be presented with the following screen:</p>
+
+<p><img src="images/filename2-fd2e01bd.png" style="width: 200px">
+<div style="margin:10px">
+<small>Fig: Merchant Details screen</small>
+</div> <br></p>
+
+<p>The option &#39;ID &amp; Key&#39; is to access the Merchant&#39;s Shop ID and Secret Key that would be used to verify that the created transactions originate from your end.</p>
+
+<p>The option URLs is to change URL configuration for your Merchant Account. Go the the URL section below for more information.</p>
+
+<p>The option Docs is to access this documentation that you are currently viewing.</p>
+<h2 id='id-amp-key-screen'>ID &amp; Key Screen</h2>
+<p>Here, you can access the shop ID and secret key for your Merchant Account, which would be necessary to sign the transactions. The signature used during signing uses this shop id and secret key. The signing verifies that the transactions sent to PayQin server originate from your end. See [How to create a transaction?] section for more information.</p>
+
+<p><img src="images/filename3-e6cb5d1a.png" style="width: 200px">
+<div style="margin:10px">
+<small>Fig: Secret Key screen (Tap on eye icon to reveal the key)</small>
+</div> <br></p>
+
+<p>In the secret key, tap on the eye icon to reveal the secret key (which is obscured by default). You can also generate a new key by clicking on the &quot;Generate new key&quot; button. You might need to generate a new key when you think that your key has been revealed to someone and thus compromised.</p>
+<h2 id='urls'>URLs</h2>
+<p><img src="images/filename4-37aa841b.png" style="width: 200px">
+<div style="margin:10px">
+<small>Fig: URLs screen</small>
+</div> <br></p>
+
+<p>The URLs screen allows you to change the URL configuration for your PayQin Merchant Account. It contains the URLs that PayQin Server will contact during several stages of the PayQin Payment Process.</p>
+
+<ol>
+<li><p>Check Order URL: PayQin server calls this URL to check if the details about the transaction is correct or not. <br>
+<code>[ TODO: Write how Check Order URL feature POSTs information ]</code> </p></li>
+<li><p>Notify URL: PayQin server sends notification to this URL about the change of state of Payment process.</p></li>
+<li><p><code>[ TODO: Write how Notify URL feature POSTs information ]</code> </p></li>
+<li><p>Success URL: PayQin server redirects the user to this URL when payment completes successfully.</p></li>
+<li><p>Fail URL: PayQin server redirects the user to this URL when payment fails to complete.</p></li>
+<li><p>Link URL: The link that uniquely identifies the Merchant&#39;s Website.s</p></li>
+</ol>
+<h1 id='how-to-create-a-transaction'>How to create a transaction?</h1>
+<p>A transaction should be created first by making a <code>POST</code> request with necessary information to <code>/api/transactions</code>. Then, users can be redirected to the url provided where the users complete the payment process.</p>
+
 <blockquote>
 <p>Request</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">GET</span> <span class="p">{</span><span class="nx">baseUrl</span><span class="p">}</span><span class="sr">/api/</span><span class="nx">business</span><span class="o">/</span><span class="nx">merchant</span>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Method</span><span class="p">:</span> <span class="nx">POST</span>
+<span class="nx">Base</span> <span class="nx">Url</span><span class="p">:</span> <span class="s2">`https://business-api-2.ew.r.appspot.com`</span>
+<span class="nl">Endpoint</span><span class="p">:</span> <span class="sr">/api/</span><span class="nx">transactions</span>
 <span class="nl">Headers</span><span class="p">:</span>
-<span class="nl">Authorization</span><span class="p">:</span> <span class="nx">Bearer</span> <span class="o">&lt;</span><span class="nx">AUTH_TOKEN</span><span class="o">&gt;</span>
+<span class="nl">Accept</span><span class="p">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
-</code></pre>
+<span class="nl">Body</span><span class="p">:</span>
+<span class="p">{</span>
+   <span class="s2">"shopId"</span><span class="p">:</span> <span class="s2">"5e8b48961b191f0017ad43f8"</span><span class="p">,</span>
+   <span class="s2">"amount"</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+   <span class="s2">"customerNumber"</span><span class="p">:</span> <span class="s2">"1234"</span><span class="p">,</span>
+   <span class="s2">"orderNumber"</span><span class="p">:</span> <span class="s2">"123456"</span><span class="p">,</span>
+   <span class="s2">"signature"</span><span class="p">:</span> <span class="s2">"5E311DAD75AD7F68E732E4CBA01461D9"</span>
+<span class="p">}</span>
+
+
+</code></pre><h2 id='request-description'>Request Description</h2>
+<p><code>shopId</code>: [UUID] Your shop ID as registered with PayQin <br>
+<code>amount</code>: [Number] The amount that the customer should pay <br>
+<code>customerNumber</code>: [String] A customer ID with which you can identify the customer <br>
+<code>orderNumber</code>: [String] A order ID with which you can identify the order <br>
+<code>Signature</code>: [MD5 Hash] MD5 Hash with which PayQin server knows that the transaction was initiated from you. See [How to create a signature]section for more details. Note that Signature should be in ALL CAPS.</p>
+
 <blockquote>
 <p>Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a1b2c3"</span><span class="w"> </span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"notifyUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/notify"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"successUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/success"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"failUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/fail"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"checkOrderUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/checkOrder"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"vendors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"vendor1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"vendor2"</span><span class="p">],</span><span class="w">
-  </span><span class="s2">"secretKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Secret Key"</span><span class="w">
+   </span><span class="s2">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f61a1102c68efa6b68daa2d"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"merchant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f158570b13b18aebc8ffc77"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XOF"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"orderNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"customerNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5E311DAD75AD7F68E732E4CBA01461D9"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-16T05:22:24.196Z"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"feeAmount"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"feeAmountMerchant"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://get-payqin.ew.r.appspot.com/api/business/transaction/view/5f61a1102c68efa6b68daa2d"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
+</span></code></pre><h2 id='response-description'>Response Description</h2>
+<p>The most important property and the only one that you will every likely need is the url property. Just redirect the paying customers to this link to have them complete the payment process through our website.</p>
 
-</span></code></pre>
-<p>Get info <code>(including secret key)</code> about a merchant
-[Note: Secret key can also be accessed from the PayQin App]
-[Note: For <AUTH_TOKEN> Please access the Auth segment]</p>
-<h1 id='generate-new-secret-key'>Generate new secret key</h1>
-<p><code>[Note: This can also be done from the PayQin App]</code> </p>
+<p><code>transaction</code>: [Object] Information about the transaction just created. <br>
+<code>id</code>: [UUID] UUID of the transaction <br>
+<code>merchant</code>: [UUID] Merchant UUID <br>
+<code>currency</code>: [String] Currency in which the transaction will be processed. It is the same currency in which the merchant has his account. <br>
+<code>amount</code>: [Number] Amount of the transaction <br>
+<code>status</code>: [String] Current status of the transaction. Available statuses: open, pending, completed and failed <br>
+<code>orderNumber</code>: [String] The order number provided in the Request body <br>
+<code>customerNumber</code>: [String] The customer number provided in the Request body <br>
+<code>signature</code>: [MD5 Hash] The signature provided in the Request body <br>
+<code>createdAt</code>: [Date] The Date &amp; Time at which the transaction was created <br>
+<code>feeAmount</code>: [Number] Not necessary <br>
+<code>feeAmountMerchant</code>: [Number] Not necessary <br>
+<code>url</code>: [String] The url at which paying customers can complete the payment process for this transaction <br>
+<code>success</code>: [Boolean] Whether the POST request succeeded or not</p>
+<h1 id='how-to-sign-your-transaction-how-to-generate-a-signature'>How to sign your transaction? [How to generate a signature?]</h1>
+<p>This section describes in more detail how to create a signature that is used authenticate and authorize the creation of a transaction. To generate you just need the following things:
+shopId: Id under which your account is registered as a Merchant
+amount: The amount of the transaction
+secretKey: The secret key associated with your Merchant Account. You can obtain this either through the PayQin App or see the [Get Merchant Information] or see the [Generate new secret key] section below.
+After you have these three things, put them in a single string separated by semi-colons (&quot;shopId;amount;secretKey&quot;), and create a MD5 hash of this string. The resulting string when uppercased will be the signature that you need for your transaction.</p>
 
-<blockquote>
-<p>Request</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">POST</span> <span class="p">{</span><span class="nx">base_url</span><span class="p">}</span><span class="sr">/api/</span><span class="nx">business</span><span class="o">/</span><span class="nx">merchant</span><span class="o">/</span><span class="nx">generate</span><span class="o">-</span><span class="nx">key</span>
-<span class="nl">Headers</span><span class="p">:</span>
-<span class="nl">Authorization</span><span class="p">:</span> <span class="nx">Bearer</span> <span class="o">&lt;</span><span class="nx">MASTER_KEY</span><span class="o">&gt;</span>
-<span class="nx">Accept</span><span class="p">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+<p>For example: 
+Let us suppose the values for each would be:
+shopId: 5e8b48961b191f0017ad43f8
+amount: 1000
+secretKey: BMXlyAyEnm96Hh3E0UDjK0Xy</p>
 
-</code></pre><h1 id='change-info-excluding-secret-key-about-a-merchant'>Change info (excluding secret key) about a merchant</h1>
-<p><code>[Note: This can also be done from the PayQin App]</code> </p>
+<p>Then the combined string separated by semi-colons would be:
+5e8b48961b191f0017ad43f8;1000;BMXlyAyEnm96Hh3E0UDjK0Xy</p>
 
-<blockquote>
-<p>Request</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">PUT</span> <span class="p">{</span><span class="nx">base_url</span><span class="p">}</span><span class="sr">/api/</span><span class="nx">business</span><span class="o">/</span><span class="nx">merchant</span>
+<p>The MD5 hash of this string would be:
+8F69F1A1E8EC2FFA705260150148ABEA</p>
 
-<span class="nl">Headers</span><span class="p">:</span>
-<span class="nl">Authorization</span><span class="p">:</span> <span class="nx">Bearer</span> <span class="o">&lt;</span><span class="nx">MASTER_KEY</span><span class="o">&gt;</span>
-<span class="nx">Accept</span><span class="p">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
-
-</code></pre>
-<blockquote>
-<p>Body </p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"fee"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;Fee</span><span class="w"> </span><span class="err">Percent</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">Number&gt;</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"checkOrderUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"notifyUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"successUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"failUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="p">,</span><span class="w">  
-  </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-<blockquote>
-<p>Response </p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"merchant"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a1b2c3"</span><span class="w"> </span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fee"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;Fee</span><span class="w"> </span><span class="err">Percent</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">Number&gt;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"notifyUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"successUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"failUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"checkOrderUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"vendors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"vendor1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"vendor2"</span><span class="p">]</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre><h1 id='create-a-transaction'>Create a transaction</h1>
-<blockquote>
-<p>Request</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">POST</span> <span class="p">{</span><span class="nx">business_base_url</span><span class="p">}</span><span class="sr">/business-api/</span><span class="nx">transactions</span>
-<span class="nl">Header</span><span class="p">:</span>
-<span class="nl">Accept</span><span class="p">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
-
-
-</code></pre>
-<blockquote>
-<p>Body</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"shopId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;your-payqin-id-here&gt;"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;Total</span><span class="w"> </span><span class="err">amount</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">transaction&gt;</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"customerNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Customer Id with which you can identify the customer&gt;"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"orderNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Order Id with which you can identify the order&gt;"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;MD5 Hash with which we know the transaction is initiated by you&gt;"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre><h1 id='how-to-create-signature'>How to create signature?</h1>
-<blockquote>
-<p>Response </p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"transaction"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;transaction id&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"merchant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;merchant id&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"vendor"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;CUR&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;amount&gt;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPEN"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"orderNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;order number&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"customerNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;customer number&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;signature&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Date and Time&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"feeAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Fee amount&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"feeAmountMerchant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Fee amount to merchant&gt;"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example.com"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>Create a MD5 hash of shopId;amount;secretKey
-You can obtain your secretKey through the App or see the section [Get info (including secret key) about a merchant] or [Generate new secret key] section</p>
+<p>which is the required signature of our transaction.</p>
 
       </div>
       <div class="dark-box">

@@ -250,6 +250,39 @@
           <li>
             <a href="#how-to-sign-your-transaction-how-to-generate-a-signature" class="toc-h1 toc-link" data-title="How to sign your transaction? [How to generate a signature?]">How to sign your transaction? [How to generate a signature?]</a>
           </li>
+          <li>
+            <a href="#pay-your-customers" class="toc-h1 toc-link" data-title="Pay your customers">Pay your customers</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#request-description-2" class="toc-h2 toc-link" data-title="Request Description">Request Description</a>
+                  </li>
+                  <li>
+                    <a href="#response-description-2" class="toc-h2 toc-link" data-title="Response Description">Response Description</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#get-transaction" class="toc-h1 toc-link" data-title="Get Transaction">Get Transaction</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#request-description-3" class="toc-h2 toc-link" data-title="Request description">Request description</a>
+                  </li>
+                  <li>
+                    <a href="#response-description-3" class="toc-h2 toc-link" data-title="Response Description">Response Description</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#check-transaction" class="toc-h1 toc-link" data-title="Check Transaction">Check Transaction</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#request-description-4" class="toc-h2 toc-link" data-title="Request description">Request description</a>
+                  </li>
+                  <li>
+                    <a href="#response-description-4" class="toc-h2 toc-link" data-title="Response Description">Response Description</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
     </div>
     <div class="page-wrapper">
@@ -399,7 +432,172 @@ secretKey: BMXlyAyEnm96Hh3E0UDjK0Xy</p>
 8F69F1A1E8EC2FFA705260150148ABEA</p>
 
 <p>which is the required signature of our transaction.</p>
+<h1 id='pay-your-customers'>Pay your customers</h1>
+<p>This section allows you to transfer money from your PayQin merchant account to the PayQin customer account of your user.</p>
 
+<p><code>You don&#39;t need to enter the currency. The currency of your merchant account is automatically used for the transaction</code></p>
+<h2 id='request-description-2'>Request Description</h2>
+<p><code>shopId</code>: [String] Your PayQin merchant ShopId <br>
+<code>amount</code>: [Number] Amount of the transaction <br>
+<code>secretKey</code>: [String] Your PayQin merchant secret key<br>
+<code>customerPhoneNumber</code>: [String] The number of the user you want to transfer money to <br></p>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Method</span><span class="p">:</span> <span class="nx">POST</span>
+<span class="nx">Base</span> <span class="nx">Url</span><span class="p">:</span> <span class="s2">`https://business-api-2.ew.r.appspot.com`</span>
+<span class="nl">Endpoint</span><span class="p">:</span> <span class="sr">/api/</span><span class="nx">transactions</span><span class="o">/</span><span class="nx">merchant</span>
+<span class="nl">Headers</span><span class="p">:</span>
+<span class="nl">Accept</span><span class="p">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+
+<span class="nl">Body</span><span class="p">:</span>
+<span class="p">{</span>
+<span class="s2">"shopId"</span><span class="p">:</span><span class="s2">"5f5d1574d2f3ce0012fceedf"</span><span class="p">,</span>
+<span class="s2">"amount"</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+<span class="s2">"secretKey"</span><span class="p">:</span> <span class="s2">"F3Kkk2vCilSJzHgTSAFw7960"</span><span class="p">,</span>
+<span class="s2">"customerPhoneNumber"</span><span class="p">:</span> <span class="s2">"+2250556203448"</span>
+<span class="p">}</span>
+
+
+</code></pre><h2 id='response-description-2'>Response Description</h2>
+<p><code>success</code>: [Boolean] Whether the POST request succeeded or not <br>
+<code>transaction</code>: [Object] Information about the transaction just created. <br>
+<code>message</code>: [String] <br></p>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code>
+<span class="p">{</span>
+  <span class="s2">"success"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">"transaction"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"6023c82c44b3d148d08af4d2"</span><span class="p">,</span>
+    <span class="s2">"merchant"</span><span class="p">:</span> <span class="s2">"5f84472a1314721a7b3f8bc2"</span><span class="p">,</span>
+    <span class="s2">"currency"</span><span class="p">:</span> <span class="s2">"XOF"</span><span class="p">,</span>
+    <span class="s2">"amount"</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+    <span class="s2">"status"</span><span class="p">:</span> <span class="s2">"completed"</span><span class="p">,</span>
+    <span class="s2">"orderNumber"</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="s2">"customerNumber"</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="s2">"signature"</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="s2">"createdAt"</span><span class="p">:</span> <span class="s2">"2021-02-10T11:49:00.757Z"</span><span class="p">,</span>
+    <span class="s2">"feeAmount"</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="s2">"feeAmountMerchant"</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="p">},</span>
+  <span class="s2">"message"</span><span class="p">:</span> <span class="s2">"You have just transferred XOF 1000 to the +2250556203448"</span>
+<span class="p">}</span>
+
+
+</code></pre><h1 id='get-transaction'>Get Transaction</h1>
+<p>Get the details of a transaction</p>
+<h2 id='request-description-3'>Request description</h2>
+<p><code>id</code>: [String] The transaction ID <br></p>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Method</span><span class="p">:</span> <span class="nx">GET</span>
+<span class="nx">Base</span> <span class="nx">Url</span><span class="p">:</span> <span class="s2">`https://business-api-2.ew.r.appspot.com`</span>
+<span class="nl">Endpoint</span><span class="p">:</span> <span class="sr">/api/</span><span class="nx">transactions</span><span class="o">/</span><span class="p">:</span><span class="nx">id</span>
+<span class="nl">Headers</span><span class="p">:</span>
+<span class="nl">Accept</span><span class="p">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+
+</code></pre><h2 id='response-description-3'>Response Description</h2>
+<p><code>success</code>: [Boolean] Whether the request succeeded or not <br>
+<code>transaction</code>: [Object] Informations about the transaction <br></p>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code>
+<span class="p">{</span>
+   <span class="s2">"transaction"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"604b884fe821dc00198f1cc6"</span><span class="p">,</span>
+    <span class="s2">"merchant"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"fee"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s2">"link"</span><span class="p">:</span> <span class="s2">"https://stocklet.ci/"</span><span class="p">,</span>
+      <span class="s2">"notifyUrl"</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+      <span class="s2">"successUrl"</span><span class="p">:</span> <span class="s2">"https://stocklet.ci/checkout-success"</span><span class="p">,</span>
+      <span class="s2">"failUrl"</span><span class="p">:</span> <span class="s2">"https://stocklet.ci/checkout-failed"</span><span class="p">,</span>
+      <span class="s2">"checkOrderUrl"</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+      <span class="s2">"secretKey"</span><span class="p">:</span> <span class="s2">"WT6P9AAbuM5DlAPYCC6swPSS"</span><span class="p">,</span>
+      <span class="s2">"_id"</span><span class="p">:</span> <span class="s2">"602bdc573ac4a0001230d0be"</span><span class="p">,</span>
+      <span class="s2">"payqinId"</span><span class="p">:</span> <span class="s2">"602bd79a115c0100126cd9a9"</span><span class="p">,</span>
+      <span class="s2">"currency"</span><span class="p">:</span> <span class="s2">"XOF"</span><span class="p">,</span>
+      <span class="s2">"createdAt"</span><span class="p">:</span> <span class="s2">"2021-02-16T14:53:11.877Z"</span><span class="p">,</span>
+      <span class="s2">"updatedAt"</span><span class="p">:</span> <span class="s2">"2021-02-22T11:53:11.208Z"</span><span class="p">,</span>
+      <span class="s2">"__v"</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">},</span>
+    <span class="s2">"currency"</span><span class="p">:</span> <span class="s2">"XOF"</span><span class="p">,</span>
+    <span class="s2">"amount"</span><span class="p">:</span> <span class="mi">13500</span><span class="p">,</span>
+    <span class="s2">"status"</span><span class="p">:</span> <span class="s2">"open"</span><span class="p">,</span>
+    <span class="s2">"orderNumber"</span><span class="p">:</span> <span class="s2">"FD13C62F4995153D2"</span><span class="p">,</span>
+    <span class="s2">"customerNumber"</span><span class="p">:</span> <span class="s2">"124"</span><span class="p">,</span>
+    <span class="s2">"signature"</span><span class="p">:</span> <span class="s2">"D32FFDAEBB0E6CDAEA6D5514D9745120"</span><span class="p">,</span>
+    <span class="s2">"createdAt"</span><span class="p">:</span> <span class="s2">"2021-03-12T15:27:11.765Z"</span><span class="p">,</span>
+    <span class="s2">"feeAmount"</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="s2">"feeAmountMerchant"</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="p">},</span>
+  <span class="s2">"success"</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+
+
+</code></pre><h1 id='check-transaction'>Check Transaction</h1>
+<p>Check the details of a transaction</p>
+<h2 id='request-description-4'>Request description</h2>
+<p><code>id</code>: [String] The transaction ID <br></p>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Method</span><span class="p">:</span> <span class="nx">GET</span>
+<span class="nx">Base</span> <span class="nx">Url</span><span class="p">:</span> <span class="s2">`https://business-api-2.ew.r.appspot.com`</span>
+<span class="nl">Endpoint</span><span class="p">:</span> <span class="sr">/api/</span><span class="nx">transactions</span><span class="o">/</span><span class="p">:</span><span class="nx">id</span><span class="o">/</span><span class="nx">check</span>
+<span class="nl">Headers</span><span class="p">:</span>
+<span class="nl">Accept</span><span class="p">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+
+</code></pre><h2 id='response-description-4'>Response Description</h2>
+<p><code>success</code>: [Boolean] Whether the request succeeded or not <br>
+<code>transaction</code>: [Object] Informations about the transaction <br></p>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code>
+<span class="p">{</span>
+  <span class="s2">"transaction"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"604b884fe821dc00198f1cc6"</span><span class="p">,</span>
+    <span class="s2">"merchant"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"fee"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s2">"link"</span><span class="p">:</span> <span class="s2">"https://stocklet.ci/"</span><span class="p">,</span>
+      <span class="s2">"notifyUrl"</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+      <span class="s2">"successUrl"</span><span class="p">:</span> <span class="s2">"https://stocklet.ci/checkout-success"</span><span class="p">,</span>
+      <span class="s2">"failUrl"</span><span class="p">:</span> <span class="s2">"https://stocklet.ci/checkout-failed"</span><span class="p">,</span>
+      <span class="s2">"checkOrderUrl"</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+      <span class="s2">"secretKey"</span><span class="p">:</span> <span class="s2">"WT6P9AAbuM5DlAPYCC6swPSS"</span><span class="p">,</span>
+      <span class="s2">"_id"</span><span class="p">:</span> <span class="s2">"602bdc573ac4a0001230d0be"</span><span class="p">,</span>
+      <span class="s2">"payqinId"</span><span class="p">:</span> <span class="s2">"602bd79a115c0100126cd9a9"</span><span class="p">,</span>
+      <span class="s2">"currency"</span><span class="p">:</span> <span class="s2">"XOF"</span><span class="p">,</span>
+      <span class="s2">"createdAt"</span><span class="p">:</span> <span class="s2">"2021-02-16T14:53:11.877Z"</span><span class="p">,</span>
+      <span class="s2">"updatedAt"</span><span class="p">:</span> <span class="s2">"2021-02-22T11:53:11.208Z"</span><span class="p">,</span>
+      <span class="s2">"__v"</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">},</span>
+    <span class="s2">"currency"</span><span class="p">:</span> <span class="s2">"XOF"</span><span class="p">,</span>
+    <span class="s2">"amount"</span><span class="p">:</span> <span class="mi">13500</span><span class="p">,</span>
+    <span class="s2">"status"</span><span class="p">:</span> <span class="s2">"open"</span><span class="p">,</span>
+    <span class="s2">"orderNumber"</span><span class="p">:</span> <span class="s2">"FD13C62F4995153D2"</span><span class="p">,</span>
+    <span class="s2">"customerNumber"</span><span class="p">:</span> <span class="s2">"124"</span><span class="p">,</span>
+    <span class="s2">"signature"</span><span class="p">:</span> <span class="s2">"D32FFDAEBB0E6CDAEA6D5514D9745120"</span><span class="p">,</span>
+    <span class="s2">"createdAt"</span><span class="p">:</span> <span class="s2">"2021-03-12T15:27:11.765Z"</span><span class="p">,</span>
+    <span class="s2">"feeAmount"</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="s2">"feeAmountMerchant"</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="p">},</span>
+  <span class="s2">"message"</span><span class="p">:</span> <span class="s2">"Merchant hasn't checkOrderUrl"</span><span class="p">,</span>
+  <span class="s2">"success"</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+
+
+</code></pre>
       </div>
       <div class="dark-box">
           <div class="lang-selector">

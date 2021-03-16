@@ -283,6 +283,9 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#configure-notifications" class="toc-h1 toc-link" data-title="Configure notifications">Configure notifications</a>
+          </li>
       </ul>
     </div>
     <div class="page-wrapper">
@@ -594,6 +597,34 @@ secretKey: BMXlyAyEnm96Hh3E0UDjK0Xy</p>
   <span class="p">},</span>
   <span class="s2">"message"</span><span class="p">:</span> <span class="s2">"Merchant hasn't checkOrderUrl"</span><span class="p">,</span>
   <span class="s2">"success"</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+
+
+</code></pre><h1 id='configure-notifications'>Configure notifications</h1>
+<p>This section allows you to configure notifications.
+At the end of your transaction PayQin will send a notification on your url with a number of parameters</p>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Method</span><span class="p">:</span> <span class="nx">POST</span>
+<span class="nx">Base</span> <span class="nx">Url</span><span class="p">:</span> <span class="s2">`your url`</span>
+<span class="nl">Endpoint</span><span class="p">:</span> <span class="s2">`your endpoint`</span>
+<span class="nl">Headers</span><span class="p">:</span>
+<span class="nl">Accept</span><span class="p">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+
+<span class="nl">Body</span><span class="p">:</span>
+<span class="p">{</span>
+  <span class="s2">"action"</span><span class="p">:</span> <span class="s2">"notification"</span><span class="p">,</span>
+  <span class="s2">"id"</span> <span class="p">:</span> <span class="s2">"5f61a1102c68efa6b68daa2d"</span><span class="p">,</span>
+  <span class="s2">"orderNumber"</span><span class="p">:</span> <span class="s2">"1234"</span><span class="p">,</span>
+  <span class="s2">"customerNumber"</span><span class="p">:</span> <span class="s2">"123456"</span><span class="p">,</span>
+  <span class="s2">"currencyCode"</span><span class="p">:</span> <span class="s2">"XOF"</span><span class="p">,</span>
+  <span class="s2">"shopAmount"</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+  <span class="s2">"status"</span><span class="p">:</span> <span class="s2">"completed"</span><span class="p">,</span>
+  <span class="s2">"endDate"</span><span class="p">:</span> <span class="s2">"2021-02-10T11:49:00.757Z"</span><span class="p">,</span>
+  <span class="s2">"signature"</span><span class="p">:</span> <span class="s2">"65DF0141F383615B7EDBC7D1A722B8CE"</span><span class="p">,</span>
+  <span class="s2">"requestDate"</span><span class="p">:</span> <span class="s2">"2021-02-10T11:49:00.757Z"</span>
 <span class="p">}</span>
 
 
